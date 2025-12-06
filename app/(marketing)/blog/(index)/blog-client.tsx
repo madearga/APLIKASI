@@ -7,6 +7,7 @@ import BlogCard from '@/components/blog/blog-card'
 import { BlogHero } from '@/components/blog/blog-hero'
 import { getBlurDataURL } from '@/lib/blog/images'
 import BlogPageSkeleton from '@/components/blog/blog-page-skeleton'
+import RelatedHelpSection from '@/components/blog/related-help-section'
 
 type Category = 'company' | 'marketing' | 'newsroom' | 'partners' | 'engineering' | 'press'
 
@@ -79,9 +80,9 @@ export default function BlogClient() {
       activeFilter === 'all'
         ? articles
         : articles.filter(
-            (article) =>
-              article.categories && article.categories.includes(activeFilter as Category)
-          ),
+          (article) =>
+            article.categories && article.categories.includes(activeFilter as Category)
+        ),
     [articles, activeFilter]
   )
 
@@ -114,6 +115,9 @@ export default function BlogClient() {
             ))}
           </div>
         </div>
+
+        {/* Related Help Section */}
+        <RelatedHelpSection activeCategory={activeFilter === 'all' ? 'all' : activeFilter} />
 
         {moreArticles.length > 0 && (
           <div className="mt-12 md:mt-16">

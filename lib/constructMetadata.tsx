@@ -7,17 +7,19 @@ export function constructMetadata({
   image = siteConfig.ogImage,
   icons = "/favicon.ico",
   noIndex = false,
+  keywords,
 }: {
   title?: string;
   description?: string;
   image?: string;
   icons?: string;
   noIndex?: boolean;
+  keywords?: string[];
 } = {}): Metadata {
   return {
     title,
     description,
-    keywords: siteConfig.keywords,
+    keywords: keywords || siteConfig.keywords,
     authors: siteConfig.authors,
     creator: siteConfig.creator,
     openGraph: {
@@ -58,5 +60,5 @@ export const HOME_DOMAIN =
   (process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL || "example.com"}`
     : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : "http://localhost:3000");
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : "http://localhost:3000");
