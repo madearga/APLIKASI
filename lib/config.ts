@@ -1,17 +1,17 @@
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_APP_NAME || "My SaaS App",
+  name: process.env.NEXT_PUBLIC_APP_NAME || "I WANNA BRING JOY",
   title: process.env.NEXT_PUBLIC_APP_NAME
-    ? `${process.env.NEXT_PUBLIC_APP_NAME} – Production-ready SaaS boilerplate`
-    : "SaaS Application – Production-ready boilerplate",
+    ? `${process.env.NEXT_PUBLIC_APP_NAME} – Ruang berbagi dan edukasi kesehatan mental`
+    : "I WANNA BRING JOY – Ruang berbagi dan edukasi kesehatan mental",
   description:
     process.env.NEXT_PUBLIC_APP_TAGLINE ||
-    "A production-ready boilerplate for SaaS applications with authentication, billing, and modern UI components.",
+    "Ruang berbagi keluh kesah tentang kehidupan dan edukasi tentang kesehatan mental. Kami ingin membantu dalam membangun kesadaran dan empati yang mendalam.",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ogImage: "/og.png",
   upgrade: {
     label: process.env.NEXT_PUBLIC_APP_NAME
-      ? `Upgrade to ${process.env.NEXT_PUBLIC_APP_NAME} Pro`
-      : "Upgrade to Pro",
+      ? `Upgrade ${process.env.NEXT_PUBLIC_APP_NAME}`
+      : "Upgrade",
     href: "/dashboard/billing",
   },
   links: {
@@ -19,39 +19,41 @@ export const siteConfig = {
     linkedin: undefined,
   },
   keywords: [
-    "SaaS boilerplate",
-    "Next.js starter kit",
-    "subscription billing",
-    "frontend design system",
-    "authentication templates",
-    "SaaS infrastructure",
-    "productized boilerplate",
-    "SaaS launch platform",
+    "i wanna bring joy",
+    "kesehatan mental",
+    "konseling psikologi",
+    "edukasi kesehatan mental",
+    "ruang berbagi keluh kesah",
+    "konseling online",
+    "psikologi klinis",
+    "terapi remaja",
+    "terapi dewasa",
+    "konselor sebaya",
   ],
   authors: [
     {
-      name: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "SaaS Team",
-      url: process.env.NEXT_PUBLIC_APP_AUTHOR_URL || "https://example.com",
+      name: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "I WANNA BRING JOY Team",
+      url: process.env.NEXT_PUBLIC_APP_AUTHOR_URL || "https://iwannabringjoy.com",
     },
   ],
-  creator: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "SaaS Team",
-  publisher: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "SaaS Team",
+  creator: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "I WANNA BRING JOY Team",
+  publisher: process.env.NEXT_PUBLIC_APP_AUTHOR_NAME || "I WANNA BRING JOY Team",
   twitterHandle: undefined,
-  locale: "en_US",
-  category: "Software",
+  locale: "id_ID",
+  category: "Healthcare",
   // Email branding configuration
   email: {
-    brandName: process.env.NEXT_PUBLIC_APP_NAME || "My SaaS App",
+    brandName: process.env.NEXT_PUBLIC_APP_NAME || "I WANNA BRING JOY",
     tagline:
       process.env.NEXT_PUBLIC_APP_TAGLINE ||
-      "A production-ready SaaS application with authentication, billing, and modern UI.",
+      "Ruang berbagi keluh kesah tentang kehidupan dan edukasi tentang kesehatan mental.",
     supportEmail:
       process.env.NEXT_PUBLIC_SUPPORT_EMAIL ||
       process.env.NEXT_PUBLIC_FROM_EMAIL ||
-      "support@example.com",
+      "counseling.iwannabringjoy@gmail.com",
     fromEmail:
-      process.env.NEXT_PUBLIC_FROM_EMAIL || "noreply@example.com",
-    fromName: process.env.NEXT_PUBLIC_APP_NAME || "My SaaS App",
+      process.env.NEXT_PUBLIC_FROM_EMAIL || "counseling.iwannabringjoy@gmail.com",
+    fromName: process.env.NEXT_PUBLIC_APP_NAME || "I WANNA BRING JOY",
   },
 };
 

@@ -5,7 +5,7 @@ export function constructMetadata({
   title = siteConfig.title,
   description = siteConfig.description,
   image = siteConfig.ogImage,
-  icons = "/favicon.ico",
+  icons = "/IWJ.png",
   noIndex = false,
   keywords,
 }: {
@@ -15,7 +15,7 @@ export function constructMetadata({
   icons?: string;
   noIndex?: boolean;
   keywords?: string[];
-} = {}): Metadata {
+} = {}) {
   return {
     title,
     description,
@@ -45,7 +45,7 @@ export function constructMetadata({
       creator: siteConfig.twitterHandle,
     },
     icons,
-    metadataBase: new URL(HOME_DOMAIN),
+    metadataBase: new URL(siteConfig.url),
     ...(noIndex && {
       robots: {
         index: false,

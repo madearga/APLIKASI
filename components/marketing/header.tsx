@@ -14,14 +14,16 @@ import {
   X,
   Shield,
   SquareActivity,
-  Sparkles,
-  Cpu,
-  Gem,
-  ShoppingBag,
+  Users,
+  FileText,
+  Video,
+  CalendarDays,
+  BarChart3,
+  Brain,
+  Hospital,
+  Building2,
   BookOpen,
-  Notebook,
-  Croissant,
-  Smartphone,
+  HelpCircle,
 } from "lucide-react";
 import { useMedia } from "@/hooks/use-media";
 import {
@@ -49,81 +51,89 @@ interface MobileLink {
 
 const features: FeatureLink[] = [
   {
-    href: "#ux",
-    name: "AI",
-    description: "Generate Insights and Recommendations",
-    icon: <Sparkles className="stroke-foreground fill-green-500/15" />,
+    href: "#manajemen-pasien",
+    name: "Manajemen Pasien",
+    description: "Profil terenkripsi dan riwayat lengkap",
+    icon: <Users className="stroke-foreground fill-blue-500/15" />,
   },
   {
-    href: "#performance",
-    name: "Performance",
-    description: "Lightning-fast load times",
-    icon: <SquareActivity className="stroke-foreground fill-indigo-500/15" />,
+    href: "#assessment",
+    name: "Assessment Otomatis",
+    description: "PHQ-9, GAD-7, dan 20+ tes lainnya",
+    icon: <FileText className="stroke-foreground fill-green-500/15" />,
   },
   {
-    href: "#security",
-    name: "Security",
-    description: "Keep your data safe and secure",
-    icon: <Shield className="stroke-foreground fill-blue-500/15" />,
+    href: "#telehealth",
+    name: "Telehealth",
+    description: "Video call aman terintegrasi",
+    icon: <Video className="stroke-foreground fill-purple-500/15" />,
+  },
+  {
+    href: "#penjadwalan",
+    name: "Penjadwalan Cerdas",
+    description: "Booking online dan reminder otomatis",
+    icon: <CalendarDays className="stroke-foreground fill-orange-500/15" />,
+  },
+  {
+    href: "#progress",
+    name: "Progress Tracking",
+    description: "Grafik visual dan perbandingan",
+    icon: <BarChart3 className="stroke-foreground fill-red-500/15" />,
+  },
+  {
+    href: "#klinis",
+    name: "Clinical Tools",
+    description: "Template notes dan treatment plan",
+    icon: <Brain className="stroke-foreground fill-indigo-500/15" />,
   },
 ];
 
 const useCases: FeatureLink[] = [
   {
-    href: "#ux",
-    name: "Marketplace",
-    description: "Find and buy AI tools",
-    icon: <ShoppingBag className="stroke-foreground fill-emerald-500/25" />,
+    href: "#praktisi-individu",
+    name: "Praktisi Individu",
+    description: "Konselor dan terapis independen",
+    icon: <Users className="stroke-foreground fill-emerald-500/25" />,
   },
   {
-    href: "#security",
-    name: "API Integration",
-    description: "Integrate AI tools into your app",
-    icon: <Cpu className="stroke-foreground fill-blue-500/15" />,
+    href: "#klinik-kelompok",
+    name: "Klinik Kelompok",
+    description: "Tim praktisi yang berkolaborasi",
+    icon: <Building2 className="stroke-foreground fill-blue-500/15" />,
   },
   {
-    href: "#support",
-    name: "Partnerships",
-    description: "Get help when you need it",
-    icon: <Gem className="stroke-foreground fill-pink-500/15" />,
-  },
-  {
-    href: "#mobile",
-    name: "Mobile App",
-    description: "Get help when you need it",
-    icon: <Smartphone className="stroke-foreground fill-zinc-500/15" />,
+    href: "#rumah-sakit",
+    name: "Rumah Sakit",
+    description: "Departemen psikologi dan psikiatri",
+    icon: <Hospital className="stroke-foreground fill-red-500/15" />,
   },
 ];
 
 const contentLinks: FeatureLink[] = [
   {
-    name: "Announcements",
-    href: "#link",
+    name: "Template Assessment",
+    href: "/resources/templates",
     icon: <BookOpen className="stroke-foreground fill-purple-500/15" />,
   },
   {
-    name: "Resources",
-    href: "#link",
-    icon: <Croissant className="stroke-foreground fill-red-500/15" />,
-  },
-  {
-    name: "Blog",
-    href: "#link",
-    icon: <Notebook className="stroke-foreground fill-zinc-500/15" />,
+    name: "Panduan HIPAA",
+    href: "/resources/compliance",
+    icon: <Shield className="stroke-foreground fill-emerald-500/25" />,
   },
 ];
 
 const mobileLinks: MobileLink[] = [
   {
-    groupName: "Product",
+    groupName: "Fitur",
     links: features,
   },
   {
-    groupName: "Solutions",
+    groupName: "Solusi",
     links: [...useCases, ...contentLinks],
   },
-  { name: "Help", href: "/help" },
+  { name: "Harga", href: "#pricing" },
   { name: "Blog", href: "/blog" },
+  { name: "Bantuan", href: "/help" },
 ];
 
 export function Header() {
@@ -204,12 +214,12 @@ export function Header() {
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <Button asChild variant="outline" size="sm">
                   <Link href="/sign-in">
-                    <span>Login</span>
+                    <span>Masuk</span>
                   </Link>
                 </Button>
                 <Button asChild size="sm">
                   <Link href="/sign-up">
-                    <span>Get Started</span>
+                    <span>Mulai Gratis</span>
                   </Link>
                 </Button>
               </div>
@@ -293,24 +303,29 @@ const NavMenu = () => {
   return (
     <NavigationMenu className="**:data-[slot=navigation-menu-viewport]:bg-[color-mix(in_oklch,var(--color-muted)_25%,var(--color-background))] **:data-[slot=navigation-menu-viewport]:shadow-lg **:data-[slot=navigation-menu-viewport]:rounded-2xl **:data-[slot=navigation-menu-viewport]:top-4 [--color-muted:color-mix(in_oklch,var(--color-foreground)_5%,transparent)] [--viewport-outer-px:2rem] max-lg:hidden">
       <NavigationMenuList className="gap-3">
-        <NavigationMenuItem value="product">
+        <NavigationMenuItem value="fitur">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="#">Product</Link>
+            <Link href="#features">Fitur</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem value="solutions">
+        <NavigationMenuItem value="solusi">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="#">Solutions</Link>
+            <Link href="#solutions">Solusi</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem value="help">
+        <NavigationMenuItem value="harga">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/help">Help</Link>
+            <Link href="#pricing">Harga</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem value="blog">
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/blog">Blog</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem value="bantuan">
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/help">Bantuan</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
