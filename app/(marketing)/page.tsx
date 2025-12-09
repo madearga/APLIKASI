@@ -8,6 +8,8 @@ import { TestimonialsSection } from "@/components/marketing/psychology/Testimoni
 import { StatsSection } from "@/components/marketing/psychology/StatsSection";
 import { CTASection } from "@/components/marketing/psychology/CTASection";
 import { TrustBadges } from "@/components/marketing/psychology/TrustBadges";
+import { BentoFeatures } from "@/components/marketing/psychology/BentoFeatures";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -26,56 +28,108 @@ export default function Home() {
 
       <StatsSection />
 
+
       {billingService.isEnabled() && (
-        <section id="pricing" className="py-24 sm:py-32">
+        <motion.section
+          id="pricing"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="py-28 sm:py-40"
+        >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Paket Harga</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Pilih paket yang sesuai kebutuhan
-              </p>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mx-auto max-w-2xl text-center"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-secondary border border-border text-xs font-bold tracking-wider text-primary uppercase">
+                Harga Transparan
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6 tracking-tight">
+                Pilih paket yang <span className="text-muted-foreground/70 font-serif italic">sesuai kebutuhan</span>
+              </h2>
+              <p className="mx-auto max-w-3xl text-lg text-muted-foreground/90 leading-relaxed font-medium">
                 Semua paket termasuk trial gratis 14 hari. Ubah atau batalkan kapan saja.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              {PLANS.map((plan) => (
-                <div
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+            >
+              {PLANS.map((plan, index) => (
+                <motion.div
                   key={plan.id}
-                  className={`flex flex-col rounded-3xl bg-white shadow-lg ring-1 ring-gray-200 xl:p-10 p-8 ${plan.isPopular ? 'ring-2 ring-indigo-600 shadow-indigo-200' : ''}`}
+                  custom={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3, ease: "easeOut" } }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className={`flex flex-col rounded-3xl bg-background border border-border p-8 md:p-10 shadow-lg hover:shadow-xl transition-all duration-300 ${plan.isPopular ? 'ring-2 ring-primary shadow-primary/20 scale-[1.02]' : ''}`}
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-x-4">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+                      className="flex items-center justify-between gap-x-4 mb-5"
+                    >
                       <h3
                         id={plan.id}
-                        className={`text-lg font-semibold leading-8 ${plan.isPopular ? "text-indigo-600" : "text-gray-900"}`}
+                        className={`text-xl md:text-2xl font-heading font-bold leading-8 ${plan.isPopular ? "text-primary" : "text-foreground"}`}
                       >
                         {plan.name}
                       </h3>
                       {plan.isPopular ? (
-                        <span className="rounded-full bg-indigo-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-indigo-600">
+                        <span className="rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold leading-5 text-primary">
                           Paling Populer
                         </span>
                       ) : null}
-                    </div>
+                    </motion.div>
 
-                    <p className="mt-4 text-sm leading-6 text-gray-600">{plan.description}</p>
+                    <p className="text-md text-muted-foreground/80 mb-8 font-medium">{plan.description}</p>
 
-                    <p className="mt-6 flex items-baseline gap-x-1">
-                      <span className="text-4xl font-bold tracking-tight text-gray-900">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + (index * 0.1), type: "spring", stiffness: 200 }}
+
+                      className="mb-10 inline-flex items-baseline gap-x-1.5 bg-secondary px-3 py-2 rounded-lg"
+                    >
+                      <span className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                         {plan.price.displayAmount}
                       </span>
-                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                      <span className="text-lg font-semibold leading-6 text-muted-foreground">
                         /{plan.price.interval === 'month' ? 'bln' : 'thn'}
                       </span>
-                    </p>
+                    </motion.div>
 
-                    <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
-                      {plan.features.map((feature) => (
-                        <li key={feature.text} className="flex gap-x-3">
+                    <motion.ul
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
+                      role="list" className="space-y-4 text-md leading-7 text-muted-foreground/80"
+                    >
+                      {plan.features.map((feature, featureIndex) => (
+                        <motion.li
+                          key={feature.text}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.5 + (index * 0.1) + (featureIndex * 0.05) }}
+                          className="flex gap-x-4 items-center hover:text-foreground transition-colors"
+                        >
                           <svg
-                            className={`h-6 w-5 flex-none ${feature.included ? "text-indigo-600" : "text-gray-400"}`}
+                            className={`h-7 w-6 flex-none ${feature.included ? "text-primary" : "text-muted-foreground/40"}`}
                             viewBox="0 0 20 20"
                             fill="currentColor"
                           >
@@ -85,30 +139,37 @@ export default function Home() {
                               clipRule="evenodd"
                             />
                           </svg>
-                          {feature.text}
-                        </li>
+                          <span className="font-medium">{feature.text}</span>
+                        </motion.li>
                       ))}
-                    </ul>
+                    </motion.ul>
                   </div>
 
-                  <button
-                    className={`mt-8 block w-full rounded-md py-2 px-3 text-sm font-semibold leading-6 text-center ${
-                      plan.isPopular
-                        ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-500"
-                        : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
-                    }`}
+                  <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 + (index * 0.1), ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className={`mt-10 block w-full rounded-xl py-4 px-4 text-lg font-bold leading-7 text-center transition-all duration-300 active:scale-[0.98] ${plan.isPopular
+                      ? "bg-primary text-primary-foreground hover:bg-primary/95 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/25"
+                      : "bg-secondary text-primary hover:bg-secondary/80 hover:-translate-y-0.5"
+                      }`}
                     onClick={() => {
                       window.location.href = '/sign-up';
                     }}
                   >
                     Mulai Trial Gratis
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       )}
+
+      <BentoFeatures />
 
       <CTASection />
     </main>

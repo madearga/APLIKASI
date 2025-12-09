@@ -4,7 +4,7 @@ import { Shield, Lock, CheckCircle2 } from "lucide-react";
 
 const TrustBadges = () => {
   return (
-    <section className="py-12 bg-secondary border-y border-border">
+    <section className="py-3 bg-secondary border-y border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 items-center sm:grid-cols-4">
           <div className="flex items-center justify-center space-x-2">

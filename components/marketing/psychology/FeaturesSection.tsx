@@ -54,7 +54,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 sm:py-32 bg-gradient-to-b from-secondary/30 to-background">
+    <section id="features" className="pt-8 pb-20 sm:pt-16 sm:pb-28 bg-gradient-to-b from-secondary/30 to-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-base font-semibold leading-7 text-muted-foreground">Fitur Unggulan</h2>
